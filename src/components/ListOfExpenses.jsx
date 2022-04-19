@@ -1,6 +1,6 @@
 import {Expense} from './Expense'
 
-export const ListOfExpenses = ({expenses}) => {
+export const ListOfExpenses = ({expenses, setExpenseEdit}) => {
 
   return (
     <div className='listado-gastos contenedor'>
@@ -9,6 +9,7 @@ export const ListOfExpenses = ({expenses}) => {
             <Expense 
              key ={el.id}
              expense = {el}
+             setExpenseEdit={setExpenseEdit}
             />
         ))}
     </div>

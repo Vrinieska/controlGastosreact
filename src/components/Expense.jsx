@@ -28,12 +28,12 @@ const dicctionarioIconos ={
   louisa: IconoHannah
 }
 
-export const Expense = ({expense}) => {
+export const Expense = ({expense, setExpenseEdit}) => {
     const {category, name,qty, id,fecha} = expense
 
     const leadingActions = () => (
        <LeadingActions>
-          <SwipeAction onClick={() => console.log('editar')}>
+          <SwipeAction onClick={() => setExpenseEdit(expense)}>
            Editar
           </SwipeAction>
        </LeadingActions>

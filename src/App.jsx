@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Header } from './components/Header'
 import { ListOfExpenses } from './components/ListOfExpenses'
 import {Modal} from  './components/Modal'
@@ -14,9 +14,26 @@ const [isValidBudget, setIsValidBudget] = useState(false)
 const [modal, setModal] = useState(false)
 const [animarModal, setAnimarModal] = useState(false)
 const [expenses , setExpenses] = useState([])
+const [expenseEdit, setExpenseEdit] = useState({})
+
+
+useEffect(() => {
+  if(Object.keys(expenseEdit).length > 0)
+  {
+   setModal(true)
+  
+   
+   setTimeout(() => {
+    setAnimarModal(true)
+  }, 500)
+    
+  }
+}, [expenseEdit])
 
 const handleNewExpense = () => {
   setModal(true)
+  
+  setExpenseEdit({})
   setTimeout(() => {
     setAnimarModal(true)
   }, 500)
@@ -51,7 +68,7 @@ const saveMyExpense = (expense) =>{
    {isValidBudget && (
     <>
      <main>
-      <ListOfExpenses expenses={expenses} />
+      <ListOfExpenses expenses={expenses} setExpenseEdit={setExpenseEdit}/>
      </main>
        <div className="nuevo-gasto">
          <img src={iconNewExpense} alt = "icon newExpense" onClick={handleNewExpense}/>
@@ -65,6 +82,7 @@ const saveMyExpense = (expense) =>{
                  animarModal={animarModal}
                  setAnimarModal={setAnimarModal}
                  saveMyExpense={saveMyExpense}
+                 expenseEdit={expenseEdit}
                 />}
    
   </div>

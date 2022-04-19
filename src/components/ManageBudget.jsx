@@ -10,8 +10,8 @@ export const ManageBudget = ({expenses, budget}) => {
    const totalGastado = expenses.reduce((acc, el) => el.qty + acc,0)
    const totalDisponible = budget - totalGastado 
 
-   console.log('totalDisponible',totalDisponible)
-   console.log('tGastado', totalGastado)
+  //  console.log('totalDisponible',totalDisponible)
+  //  console.log('tGastado', totalGastado)
 
    setDisponible(totalDisponible)
    setGastado(totalGastado)
